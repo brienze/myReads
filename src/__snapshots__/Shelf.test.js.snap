@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderiza corretamente 1`] = `
+<div
+  className="bookshelf"
+>
+  <h2
+    className="bookshelf-title"
+  >
+    read
+  </h2>
+  <div
+    className="bookshelf-books"
+  >
+    <ol
+      className="books-grid"
+    >
+      <BookApp
+        addOrMoveBook={[Function]}
+        book={
+          Object {
+            "authors": Array [
+              "Miss Marquis Graham",
+            ],
+            "categories": Array [
+              "quasi",
+            ],
+            "id": "0cbaade8-3783-4e5f-af96-092be623da80",
+            "imageLinks": Object {
+              "thumbnail": "http://lorempixel.com/640/480",
+            },
+            "pageCount": 192,
+            "previewLink": "http://lorempixel.com/640/480",
+            "ratingsCount": 1,
+            "shelf": "currentlyReading",
+            "title": "voluptas",
+          }
+        }
+        key="0cbaade8-3783-4e5f-af96-092be623da80"
+        shelf="currentlyReading"
+      />
+      <BookApp
+        addOrMoveBook={[Function]}
+        book={
+          Object {
+            "authors": Array [
+              "Mckenzie Cormier",
+            ],
+            "categories": Array [
+              "iusto",
+            ],
+            "id": "00db05ad-d06a-45d4-9b83-214ba0473260",
+            "imageLinks": Object {
+              "thumbnail": "http://lorempixel.com/640/480",
+            },
+            "pageCount": 105,
+            "previewLink": "http://lorempixel.com/640/480",
+            "ratingsCount": 4,
+            "shelf": "read",
+            "title": "repudiandae",
+          }
+        }
+        key="00db05ad-d06a-45d4-9b83-214ba0473260"
+        shelf="read"
+      />
+      <BookApp
+        addOrMoveBook={[Function]}
+        book={
+          Object {
+            "authors": Array [
+              "Ernesto Roberts",
+            ],
+            "categories": Array [
+              "non",
+            ],
+            "id": "6cabdd5c-03c7-4b58-bdfa-90cc8ada1d92",
+            "imageLinks": Object {
+              "thumbnail": "http://lorempixel.com/640/480",
+            },
+            "pageCount": 52,
+            "previewLink": "http://lorempixel.com/640/480",
+            "ratingsCount": 2,
+            "shelf": "wantToRead",
+            "title": "inventore",
+          }
+        }
+        key="6cabdd5c-03c7-4b58-bdfa-90cc8ada1d92"
+        shelf="wantToRead"
+      />
+      <BookApp
+        addOrMoveBook={[Function]}
+        book={
+          Object {
+            "authors": Array [
+              "Travis Ziemann",
+            ],
+            "categories": Array [
+              "sunt",
+            ],
+            "id": "e2523aff-9de1-4d47-897b-088ebc34edda",
+            "imageLinks": Object {
+              "thumbnail": "http://lorempixel.com/640/480",
+            },
+            "pageCount": 68,
+            "previewLink": "http://lorempixel.com/640/480",
+            "ratingsCount": 4,
+            "shelf": "read",
+            "title": "voluptas",
+          }
+        }
+        key="e2523aff-9de1-4d47-897b-088ebc34edda"
+        shelf="read"
+      />
+    </ol>
+  </div>
+</div>
+`;

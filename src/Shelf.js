@@ -1,5 +1,6 @@
 import React from 'react'
-import BookApp from './BookApp.js'
+import PropTypes from 'prop-types';
+import BookApp from './Book.js'
 import './App.css'
 
 class ShelfApp extends React.Component {
@@ -24,4 +25,10 @@ class ShelfApp extends React.Component {
           )
       }
   }
+
+ShelfApp.propTypes = {
+  bookShelfName: PropTypes.string.isRequired,
+  books: PropTypes.array.isRequired,
+  onMoveBook: PropTypes.func.isRequired
+}
 export default ShelfApp

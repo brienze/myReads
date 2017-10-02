@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render without any errors 1`] = `
+<div
+  className="app"
+>
+  <Route
+    exact={true}
+    path="/"
+    render={[Function]}
+  />
+  <Route
+    path="/search"
+    render={[Function]}
+  />
+</div>
+`;

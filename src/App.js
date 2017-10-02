@@ -15,6 +15,7 @@ class MyReadsApp extends React.Component {
     BooksAPI.getAll().then((books) => {
       this.setState({books})
     })
+
   }
   handleMoveBook = (to,bookToMove) =>{
     this.moveBook(bookToMove,to.value);
@@ -26,38 +27,40 @@ class MyReadsApp extends React.Component {
 
   moveBook = (bookToMove,to) =>{
     BooksAPI.update(bookToMove, to);
-
     this.setState({
       books : this.state.books.map((book) =>{
         if(book.id === bookToMove.id){
+
+          console.log(Object.assign({},book,{shelf:to}));
+
           return Object.assign({},book,{shelf:to});
         }else{
           return book;
         }
       })
     });
+    console.log(this.state.books)
   };
 
-  addBook = (bookToAdd,to) =>{
-    BooksAPI.update(bookToAdd, to).then((updatedBooks) => {
-    });
-
-    this.setState(prev => {
-      const {books=[]} = prev;
-      books.push(bookToAdd);
-      return {books:books}
-    });
-  };
+  addBook(bookToAdd,to) {
+    BooksAPI.update(bookToAdd, to).then(() => {
+      this.setState(state => ({
+        books: state.books.concat([ Object.assign({},bookToAdd,{shelf:to}) ])
+      }))
+    })
+  }
 
   render() {
     return (
       <div className="app">
-
         <Route path='/' exact render={
           ()=>(
             <ListShelvesApp
               myBooks={this.state.books}
-              onMoveBook={this.handleMoveBook}
+              onMoveBook={(to,bookToMove)=>{
+                this.handleMoveBook(to,bookToMove)
+              }
+              }
             />
           )
         }/>
@@ -66,7 +69,10 @@ class MyReadsApp extends React.Component {
           ()=>(
             <SearchBooksApp
               myBooks={this.state.books}
-              addBook={this.handleAddBook}
+              addBook={(bookToAdd,to)=>{
+                this.handleAddBook(bookToAdd,to)
+              }
+            }
             />
           )
         }/>

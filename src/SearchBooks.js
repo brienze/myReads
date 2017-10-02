@@ -1,5 +1,6 @@
 import React from 'react'
-import BookApp from './BookApp.js'
+import PropTypes from 'prop-types';
+import BookApp from './Book.js'
 import './App.css'
 import {Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
@@ -28,11 +29,16 @@ class SearchBooksApp extends React.Component {
     }
   };
 
+/*
+Verifica se o livro contido no resultado da busca está na minha estante, caso esteja
+é obtida a shelf para que seja definido no 'estado' do livro.
+  */
+
 definirShelf(aBookId){
-  var shelfFound = this.props.myBooks.find((myBook) =>{
+  var bookFound = this.props.myBooks.find((myBook) =>{
        return myBook.id === aBookId;
    });
-   return shelfFound ? shelfFound.shelf : "none";
+   return bookFound ? bookFound.shelf : "none";
 }
 
   render(){
@@ -68,6 +74,10 @@ definirShelf(aBookId){
       </div>
     )
   }
+}
+
+SearchBooksApp.propTypes={
+  addBook: PropTypes.func.isRequired
 }
 
 export default SearchBooksApp

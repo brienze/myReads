@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderiza corretamente 1`] = `
+<span>
+  Olá teste
+</span>
+`;
+
+exports[`renderiza corretamente sem elemento filho 1`] = `null`;

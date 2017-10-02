@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderiza corretamente 1`] = `
+<li>
+  <div
+    className="book"
+  >
+    <div
+      className="book-top"
+    >
+      <div
+        className="book-cover"
+        style={
+          Object {
+            "backgroundImage": "url(undefined)",
+            "height": 193,
+            "width": 128,
+          }
+        }
+      />
+      <div
+        className="book-shelf-changer"
+      >
+        <select
+          onChange={[Function]}
+          value="currentlyReading"
+        >
+          <option
+            disabled={true}
+            value="none"
+          >
+            Move to...
+          </option>
+          <option
+            value="currentlyReading"
+          >
+            Currently Reading
+          </option>
+          <option
+            value="wantToRead"
+          >
+            Want to Read
+          </option>
+          <option
+            value="read"
+          >
+            Read
+          </option>
+          <option
+            value="none"
+          >
+            None
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      className="book-title"
+    >
+      amet
+    </div>
+    <div
+      className="book-authors"
+    >
+      Bernita Rempel
+    </div>
+  </div>
+</li>
+`;

@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renderiza corretamente 1`] = `
+<div
+  className="list-books"
+>
+  <div
+    className="list-books-title"
+  >
+    <h1>
+      MyReads
+    </h1>
+  </div>
+  <div
+    className="list-books-content"
+  >
+    <div>
+      <ShelfApp
+        bookShelfName="Currently Reading"
+        books={
+          Array [
+            Object {
+              "authors": Array [
+                "Evalyn MacGyver",
+              ],
+              "categories": Array [
+                "placeat",
+              ],
+              "id": "f3435975-11b9-4d39-b7ae-15d0a595e4b1",
+              "imageLinks": Object {
+                "thumbnail": "http://lorempixel.com/640/480",
+              },
+              "pageCount": 124,
+              "previewLink": "http://lorempixel.com/640/480",
+              "ratingsCount": 4,
+              "shelf": "currentlyReading",
+              "title": "iure",
+            },
+            Object {
+              "authors": Array [
+                "Gregory Zieme",
+              ],
+              "categories": Array [
+                "nesciunt",
+              ],
+              "id": "db6a719f-aeb2-45bf-9253-5470486ab25e",
+              "imageLinks": Object {
+                "thumbnail": "http://lorempixel.com/640/480",
+              },
+              "pageCount": 148,
+              "previewLink": "http://lorempixel.com/640/480",
+              "ratingsCount": 4,
+              "shelf": "currentlyReading",
+              "title": "iste",
+            },
+          ]
+        }
+        onMoveBook={[Function]}
+      />
+      <ShelfApp
+        bookShelfName="Want to Read"
+        books={Array []}
+        onMoveBook={[Function]}
+      />
+      <ShelfApp
+        bookShelfName="Read"
+        books={
+          Array [
+            Object {
+              "authors": Array [
+                "Ena Hilpert",
+              ],
+              "categories": Array [
+                "ea",
+              ],
+              "id": "cb4ed24a-1e74-4299-886b-32d42db0e8c7",
+              "imageLinks": Object {
+                "thumbnail": "http://lorempixel.com/640/480",
+              },
+              "pageCount": 4,
+              "previewLink": "http://lorempixel.com/640/480",
+              "ratingsCount": 1,
+              "shelf": "read",
+              "title": "deleniti",
+            },
+            Object {
+              "authors": Array [
+                "Estevan Thompson",
+              ],
+              "categories": Array [
+                "modi",
+              ],
+              "id": "27968ab5-1def-44b2-8018-20b1ea73d6d7",
+              "imageLinks": Object {
+                "thumbnail": "http://lorempixel.com/640/480",
+              },
+              "pageCount": 8,
+              "previewLink": "http://lorempixel.com/640/480",
+              "ratingsCount": 5,
+              "shelf": "read",
+              "title": "quaerat",
+            },
+          ]
+        }
+        onMoveBook={[Function]}
+      />
+    </div>
+  </div>
+  <div
+    className="open-search"
+  >
+    <Link
+      replace={false}
+      to="/search"
+    >
+      Add a book
+    </Link>
+  </div>
+</div>
+`;

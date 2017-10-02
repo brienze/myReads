@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import ShelfApp from './Shelf.js'
 import {Link} from 'react-router-dom'
 import './App.css'
@@ -26,6 +27,11 @@ class ListShelvesApp extends React.Component {
       </div>
     )
   }
+}
+
+ListShelvesApp.propTypes = {
+  myBooks: PropTypes.array.isRequired,
+  onMoveBook: PropTypes.func.isRequired
 }
 
 export default ListShelvesApp
