@@ -9,7 +9,7 @@ import './App.css'
 class MyReadsApp extends React.Component {
   state = {
       books : [],
-    }
+  }
 
   componentDidMount(){
     BooksAPI.getAll().then((books) => {
@@ -30,9 +30,6 @@ class MyReadsApp extends React.Component {
     this.setState({
       books : this.state.books.map((book) =>{
         if(book.id === bookToMove.id){
-
-          console.log(Object.assign({},book,{shelf:to}));
-
           return Object.assign({},book,{shelf:to});
         }else{
           return book;

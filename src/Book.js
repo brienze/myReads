@@ -2,7 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import './App.css'
 
+//Component from https://github.com/NdYAG/react-rater
+import Rater from 'react-rater'
+import 'react-rater/lib/react-rater.css'
+
 class BookApp extends React.Component{
+  state = {
+    selectedOption: '1'
+
+  }
+
+handleOptionChange = (e)=> {
+  this.setState({
+    selectedOption: e.target.value
+  });
+}
+
   render(){
     const {book, addOrMoveBook, shelf } = this.props
     return(
@@ -22,7 +37,11 @@ class BookApp extends React.Component{
           </div>
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>
-        </div>
+            {
+              //interactive = false -> read only
+            }
+              <Rater interactive={false} total={5} rating={book.averageRating}  />
+          </div>
       </li>
     )
   }
