@@ -1,48 +1,66 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import BookApp from './Book.js'
 import './App.css'
 import {Link} from 'react-router-dom'
+import SearchResultApp from './SearchResult.js'
 import * as BooksAPI from './BooksAPI'
 
-class SearchBooksApp extends React.Component {
+//componente que renderiza um spinner enquanto a busca está ocorrendo
+//Ref: https://github.com/CognizantStudio/react-loader
+import Loader from 'react-loader'
 
-  state = {
-    searchValue: '',
-    searchedBooks:[],
+class SearchBooksApp extends React.Component {
+  static propTypes = {
+    addBook: PropTypes.func.isRequired,
+    myBooks: PropTypes.array.isRequired,
   }
+
+  constructor(props){
+    super(props)
+    this.state = {
+      searchValue: '',
+      searchedBooks:[],
+      loaded: false,
+    }
+  }
+
+  /*
+  Verifica se o livro contido no resultado da busca está na minha estante, caso esteja
+  é obtida a shelf para que seja definido no livro.
+    */
+    definirShelf = (aBookId) =>{
+      const { myBooks } = this.props;
+      var bookFound = myBooks.find((myBook) =>{
+           return myBook.id === aBookId;
+       });
+
+       return bookFound ? bookFound.shelf : "none";
+    }
 
   onSearchChange = (e) => {
     const value = e.target.value;
     this.setState({
       searchValue: value,
+      loaded: false,
     });
 
     if (value === '') {
       this.setState({
         searchedBooks: [],
+        loaded: true
       });
     } else {
       BooksAPI.search(value,50).then((books) => {
-        this.setState({searchedBooks:books})
+
+        this.setState({
+          searchedBooks:books,
+          loaded: true})
       })
     }
   };
 
-/*
-Verifica se o livro contido no resultado da busca está na minha estante, caso esteja
-é obtida a shelf para que seja definido no 'estado' do livro.
-  */
-
-definirShelf(aBookId){
-  var bookFound = this.props.myBooks.find((myBook) =>{
-       return myBook.id === aBookId;
-   });
-   return bookFound ? bookFound.shelf : "none";
-}
-
   render(){
-    const {addBook} = this.props;
+    const {addBook, myBooks} = this.props;
     return(
       <div className="search-books">
         <div className="search-books-bar">
@@ -58,26 +76,16 @@ definirShelf(aBookId){
             */}
             <input type="text" placeholder="Search by title or author" value={this.state.searchValue} onChange={this.onSearchChange}/>
           </div>
+
         </div>
-        <div className="search-books-results">
-          <ol className="books-grid">
-          {
-            this.state.searchedBooks.length > 0 &&
-            this.state.searchedBooks.map(
-                (_)=>(
-                    <BookApp key={_.id} book = {_} addOrMoveBook ={addBook} shelf={this.definirShelf(_.id)} />
-                  )
-              )
-          }
-          </ol>
-        </div>
+        {this.state.searchedBooks.length > 0 &&
+            <Loader loaded={this.state.loaded}>
+                <SearchResultApp addBook={addBook} definirShelf={this.definirShelf} foundBooks={this.state.searchedBooks}/>
+            </Loader>
+      }
       </div>
     )
   }
-}
-
-SearchBooksApp.propTypes={
-  addBook: PropTypes.func.isRequired
 }
 
 export default SearchBooksApp

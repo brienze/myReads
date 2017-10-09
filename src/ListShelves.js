@@ -4,10 +4,9 @@ import ShelfApp from './Shelf.js'
 import {Link} from 'react-router-dom'
 import './App.css'
 
-class ListShelvesApp extends React.Component {
+const ListShelvesApp = (props) => {
 
-  render(){
-    const {myBooks,onMoveBook} = this.props
+    const {myBooks,onMoveBook} = props
 
     return (
       <div className="list-books">
@@ -26,7 +25,7 @@ class ListShelvesApp extends React.Component {
         </div>
       </div>
     )
-  }
+
 }
 
 ListShelvesApp.propTypes = {
