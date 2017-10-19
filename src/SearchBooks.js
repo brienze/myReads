@@ -12,15 +12,15 @@ import Loader from 'react-loader'
 class SearchBooksApp extends React.Component {
   static propTypes = {
     addBook: PropTypes.func.isRequired,
-    myBooks: PropTypes.array.isRequired,
+    myBooks: PropTypes.array.isRequired
   }
 
-  constructor(props){
+  constructor(props) {
     super(props)
     this.state = {
       searchValue: '',
-      searchedBooks:[],
-      loaded: false,
+      searchedBooks: [],
+      loaded: false
     }
   }
 
@@ -28,40 +28,30 @@ class SearchBooksApp extends React.Component {
   Verifica se o livro contido no resultado da busca está na minha estante, caso esteja
   é obtida a shelf para que seja definido no livro.
     */
-    definirShelf = (aBookId) =>{
-      const { myBooks } = this.props;
-      var bookFound = myBooks.find((myBook) =>{
-           return myBook.id === aBookId;
-       });
-
-       return bookFound ? bookFound.shelf : "none";
-    }
+  definirShelf = (aBookId) => {
+    const bookFound = this.props.myBooks.find((myBook) => {
+      return myBook.id === aBookId;
+    });
+    return bookFound
+      ? bookFound.shelf
+      : "none";
+  }
 
   onSearchChange = (e) => {
     const value = e.target.value;
-    this.setState({
-      searchValue: value,
-      loaded: false,
-    });
-
+    this.setState({searchValue: value, loaded: false});
     if (value === '') {
-      this.setState({
-        searchedBooks: [],
-        loaded: true
-      });
+      this.setState({searchedBooks: [], loaded: true});
     } else {
-      BooksAPI.search(value,50).then((books) => {
-
-        this.setState({
-          searchedBooks:books,
-          loaded: true})
+      BooksAPI.search(value, 50).then((books) => {
+        this.setState({searchedBooks: books, loaded: true})
       })
     }
   };
 
-  render(){
-    const {addBook, myBooks} = this.props;
-    return(
+  render() {
+    const {addBook} = this.props;
+    return (
       <div className="search-books">
         <div className="search-books-bar">
           <Link className="close-search" to='/'>Close</Link>
@@ -74,15 +64,21 @@ class SearchBooksApp extends React.Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input type="text" placeholder="Search by title or author" value={this.state.searchValue} onChange={this.onSearchChange}/>
+            <input type="text"
+              placeholder="Search by title or author"
+              value={this.state.searchValue}
+              onChange={this.onSearchChange}/>
           </div>
 
         </div>
         {this.state.searchedBooks.length > 0 &&
-            <Loader loaded={this.state.loaded}>
-                <SearchResultApp addBook={addBook} definirShelf={this.definirShelf} foundBooks={this.state.searchedBooks}/>
-            </Loader>
-      }
+          <Loader loaded={this.state.loaded}>
+            <SearchResultApp
+              addBook={addBook}
+              definirShelf={this.definirShelf}
+              foundBooks={this.state.searchedBooks}/>
+          </Loader>
+        }
       </div>
     )
   }

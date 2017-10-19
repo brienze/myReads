@@ -4,24 +4,24 @@ import BookApp from './Book.js'
 import './App.css'
 
 const ShelfApp = (props) => {
-    const {bookShelfName,books,onMoveBook } = props
-    return (
-          <div className="bookshelf">
-            <h2 className="bookshelf-title">{bookShelfName}</h2>
-            <div className="bookshelf-books">
-              <ol className="books-grid">
-                  {
-                    books.map(
-                      (_)=>(
-                          <BookApp key={_.id} book = {_} addOrMoveBook ={onMoveBook} shelf={_.shelf} fromSearch={false}/>
-                      )
-                    )
-                  }
-              </ol>
-            </div>
-          </div>
-      )
-  }
+  const {bookShelfName, books, onMoveBook} = props
+  return (
+    <div className="bookshelf">
+      <h2 className="bookshelf-title">{bookShelfName}</h2>
+      <div className="bookshelf-books">
+        <ol className="books-grid">
+          {books.map((book) => (
+            <BookApp
+              key={book.id} book={book}
+              addOrMoveBook ={onMoveBook}
+              shelf={book.shelf}
+              fromSearch={false}/>))
+          }
+        </ol>
+      </div>
+    </div>
+  )
+}
 
 ShelfApp.propTypes = {
   bookShelfName: PropTypes.string.isRequired,
